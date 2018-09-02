@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">taskextend_form.task_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Task Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save_and_continue" class="Prashant\TaskExtend\Block\Adminhtml\TaskExtend\Edit\SaveAndContinueButton"/>
+            <button name="save" class="Prashant\TaskExtend\Block\Adminhtml\TaskExtend\Edit\SaveButton"/>
+            <button name="reset" class="Prashant\TaskExtend\Block\Adminhtml\TaskExtend\Edit\ResetButton"/>
+            <button name="delete" class="Prashant\TaskExtend\Block\Adminhtml\TaskExtend\Edit\DeleteButton"/>
+            <button name="back" class="Prashant\TaskExtend\Block\Adminhtml\TaskExtend\Edit\BackButton"/>
+        </buttons>
+        <namespace>taskextend_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>taskextend_form.task_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="task_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="taskextend/index/save"/>
+        </settings>
+        <dataProvider class="Prashant\TaskExtend\Model\Task\DataProvider" name="task_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="task_name" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Task Name</label>
+                <dataScope>task_name</dataScope>
+            </settings>
+        </field>
+        <field name="task_description" sortOrder="20" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Task Description</label>
+                <dataScope>task_description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+		<field name="assigned_person" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Assigned Person</label>
+                <dataScope>assigned_person</dataScope>
+            </settings>
+        </field>
+		<field name="status" sortOrder="40" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+             <formElements>
+                <select>
+                    <settings>
+                        <options class="Prashant\TaskExtend\Model\Source\Status"/>
+						<caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+		<field name="start_time" sortOrder="50" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start Time</label>
+                <visible>true</visible>
+                <dataScope>start_time</dataScope>
+            </settings>
+        </field>
+        <field name="end_time" sortOrder="60" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">task</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">End Time</label>
+                <visible>true</visible>
+                <dataScope>end_time</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

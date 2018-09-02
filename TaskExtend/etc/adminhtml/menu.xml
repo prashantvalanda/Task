@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Prashant_TaskExtend::parent" title="Task" module="Prashant_TaskExtend" sortOrder="40" resource="Prashant_TaskExtend::parent"/>
+		<add id="Prashant_TaskExtend::taskextend" title="Task Manage" module="Prashant_TaskExtend" sortOrder="20" parent="Prashant_TaskExtend::parent" action="taskextend/index" resource="Prashant_TaskExtend::taskextend"/>
+    </menu>
+</config>
